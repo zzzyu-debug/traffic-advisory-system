@@ -24,8 +24,8 @@ COPY app.py .
 COPY static/ static/
 COPY cities.csv airports_cn.csv china_flights.csv stations.csv stations2.csv railway_line.csv ./
 
-ENV PORT=5000
+ENV PORT=7860
 EXPOSE ${PORT}
 
-# 使用 shell 模式支持 $PORT 环境变量（Zeabur / Railway 等平台会自动设置 PORT）
+# 使用 shell 模式支持 $PORT 环境变量（HF Spaces=7860 / docker-compose 可覆盖为 5000）
 CMD gunicorn --bind "0.0.0.0:${PORT}" --workers 2 --timeout 120 app:app
