@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国交通模拟系统</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; background: #1a1a2e; }
+
+#app { display: flex; height: 100%; }
+
+/* ---- 左侧面板 ---- */
+#panel {
+  width: 380px; min-width: 380px; background: #16213e; color: #e0e0e0;
+  display: flex; flex-direction: column; overflow-y: auto;
+  border-right: 2px solid #0f3460; z-index: 10;
+}
+#panel-header {
+  background: linear-gradient(135deg, #0f3460, #16213e);
+  padding: 20px; text-align: center; border-bottom: 1px solid #1a3a6b;
+}
+#panel-header h1 { font-size: 20px; color: #e94560; margin-bottom: 4px; }
+#panel-header p  { font-size: 12px; color: #8899aa; }
+
+#panel-form { padding: 16px 20px; border-bottom: 1px solid #1a3a6b; }
+
+.field { margin-bottom: 12px; }
+.field label { display: block; font-size: 13px; color: #8899aa; margin-bottom: 4px; }
+
+/* 输入框自动补全容器 */
+.input-wrap { position: relative; }
+.input-wrap input {
+  width: 100%; padding: 10px 12px; border: 1px solid #1a3a6b;
+  border-radius: 6px; font-size: 14px; background: #0f3460; color: #e0e0e0;
+  outline: none; transition: border-color 0.2s;
+}
+.input-wrap input:focus { border-color: #e94560; }
+.input-wrap input::placeholder { color: #556677; }
+
+.suggestions {
+  position: absolute; top: 100%; left: 0; right: 0;
+  max-height: 200px; overflow-y: auto;
+  background: #1a3468; border: 1px solid #0f3460; border-radius: 0 0 6px 6px;
+  z-index: 100; display: none;
+}
+.suggestions .item {
+  padding: 8px 12px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #0f3460;
+}
+.suggestions .item:hover { background: #e94560; color: #fff; }
+.suggestions .item .sub { font-size: 11px; color: #8899aa; }
+
+/* 按钮组 */
+.btn-group { display: flex; gap: 6px; margin-bottom: 12px; }
+.btn-group button {
+  flex: 1; padding: 7px 8px; border: 1px solid #1a3a6b; border-radius: 6px;
+  font-size: 12px; cursor: pointer; background: #0f3460; color: #8899aa;
+  transition: all 0.2s;
+}
+.btn-group button.active { background: #e94560; color: #fff; border-color: #e94560; }
+.btn-group button:hover:not(.active) { border-color: #e94560; color: #e0e0e0; }
+
+#btn-search {
+  width: 100%; padding: 12px; border: none; border-radius: 6px;
+  font-size: 15px; cursor: pointer; background: #e94560; color: #fff;
+  font-weight: bold; transition: background 0.2s;
+}
+#btn-search:hover { background: #d63850; }
+#btn-search:disabled { background: #556677; cursor: not-allowed; }
+
+/* 结果区 */
+#panel-results { flex: 1; padding: 16px 20px; overflow-y: auto; }
+.result-summary {
+  background: #0f3460; border-radius: 8px; padding: 14px; margin-bottom: 12px;
+  text-align: center;
+}
+.result-summary .total { font-size: 28px; font-weight: bold; color: #e94560; }
+.result-summary .unit  { font-size: 13px; color: #8899aa; }
+
+.segment-card {
+  background: #0f3460; border-radius: 8px; padding: 14px; margin-bottom: 10px;
+  border-left: 4px solid #e94560; cursor: pointer; transition: background 0.2s;
+}
+.segment-card:hover { background: #1a3a6b; }
+.segment-card.plane { border-left-color: #4ecdc4; }
+.segment-card .seg-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.segment-card .seg-type {
+  font-size: 11px; padding: 2px 8px; border-radius: 10px;
+  background: #e94560; color: #fff;
+}
+.segment-card .seg-type.plane-type { background: #4ecdc4; color: #1a1a2e; }
+.segment-card .seg-schedule { font-size: 12px; color: #8899aa; }
+.segment-card .seg-route { font-size: 14px; color: #e0e0e0; margin-bottom: 4px; }
+.segment-card .seg-route .arrow { color: #e94560; margin: 0 6px; }
+.segment-card .seg-meta { font-size: 12px; color: #8899aa; display: flex; gap: 16px; }
+
+.placeholder {
+  text-align: center; color: #556677; padding: 40px 20px; font-size: 14px;
+}
+
+.error-msg { color: #e94560; font-size: 13px; text-align: center; padding: 12px; }
+
+/* ---- 右侧地图 ---- */
+#map { flex: 1; height: 100%; }
+
+/* 加载动画 */
+.spinner {
+  display: inline-block; width: 20px; height: 20px;
+  border: 2px solid #8899aa; border-top-color: #e94560;
+  border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 8px;
+  vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <!-- ===== 左侧面板 ===== -->
+  <div id="panel">
+    <div id="panel-header">
+      <h1>中国交通模拟系统</h1>
+      <p>National Traffic Advisory System</p>
+    </div>
+
+    <div id="panel-form">
+      <div class="field">
+        <label>起点</label>
+        <div class="input-wrap" id="wrap-from">
+          <input id="input-from" type="text" placeholder="输入城市名或站名..." autocomplete="off">
+          <div class="suggestions" id="sug-from"></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>终点</label>
+        <div class="input-wrap" id="wrap-to">
+          <input id="input-to" type="text" placeholder="输入城市名或站名..." autocomplete="off">
+          <div class="suggestions" id="sug-to"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>查询模式</label>
+        <div class="btn-group" id="btn-mode">
+          <button data-value="1" class="active">最快到达</button>
+          <button data-value="2">最省钱</button>
+          <button data-value="3">最少换乘</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>交通工具</label>
+        <div class="btn-group" id="btn-transport">
+          <button data-value="1" class="active">火车</button>
+          <button data-value="2">飞机</button>
+        </div>
+      </div>
+
+      <button id="btn-search">查询路线</button>
+    </div>
+
+    <div id="panel-results">
+      <div class="placeholder">输入起点和终点，点击查询</div>
+    </div>
+  </div>
+
+  <!-- ===== 右侧地图 ===== -->
+  <div id="map"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ===== 全局状态 =====
+let stationsList = [];
+let citiesList = [];
+let queryMode = 1;
+let queryTransport = 1;
+let mapLayers = [];
+
+// ===== 地图初始化 =====
+const map = L.map("map", {
+  center: [35.0, 105.0],
+  zoom: 5,
+  zoomControl: true,
+});
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom: 18,
+}).addTo(map);
+
+// ===== 加载数据 =====
+async function loadData() {
+  try {
+    const [stationsRes, citiesRes] = await Promise.all([
+      fetch("/api/stations"),
+      fetch("/api/cities"),
+    ]);
+    const stationsData = await stationsRes.json();
+    const citiesData = await citiesRes.json();
+    stationsList = (stationsData.stations || []).filter(s => s.lat !== 0 && s.lon !== 0);
+    citiesList = citiesData.cities || [];
+    console.log(`Loaded ${stationsList.length} stations, ${citiesList.length} cities`);
+  } catch (e) {
+    console.error("Failed to load data:", e);
+  }
+}
+loadData();
+
+// ===== 自动补全 =====
+function buildSuggestions(query, container) {
+  container.innerHTML = "";
+  if (!query || query.length < 1) {
+    container.style.display = "none";
+    return;
+  }
+  const q = query.toLowerCase();
+
+  // 精确匹配站名优先，然后城市名
+  const matches = [];
+  for (const s of stationsList) {
+    if (s.name.toLowerCase().includes(q)) matches.push({ name: s.name, type: "站" });
+  }
+  for (const c of citiesList) {
+    if (c.name.toLowerCase().includes(q)) matches.push({ name: c.name, type: "城" });
+  }
+
+  const seen = new Set();
+  const unique = matches.filter(m => { if (seen.has(m.name)) return false; seen.add(m.name); return true; });
+  const limited = unique.slice(0, 12);
+
+  if (limited.length === 0) {
+    container.style.display = "none";
+    return;
+  }
+
+  limited.forEach(m => {
+    const div = document.createElement("div");
+    div.className = "item";
+    div.innerHTML = `${m.name} <span class="sub">${m.type}</span>`;
+    div.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      const input = container.parentElement.querySelector("input");
+      input.value = m.name;
+      container.style.display = "none";
+    });
+    container.appendChild(div);
+  });
+  container.style.display = "block";
+}
+
+document.getElementById("input-from").addEventListener("input", function() {
+  buildSuggestions(this.value.trim(), document.getElementById("sug-from"));
+});
+document.getElementById("input-to").addEventListener("input", function() {
+  buildSuggestions(this.value.trim(), document.getElementById("sug-to"));
+});
+
+// 点击外部关闭下拉
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".input-wrap")) {
+    document.querySelectorAll(".suggestions").forEach(s => s.style.display = "none");
+  }
+});
+
+// ===== 按钮组切换 =====
+document.getElementById("btn-mode").addEventListener("click", (e) => {
+  if (e.target.tagName !== "BUTTON") return;
+  document.querySelectorAll("#btn-mode button").forEach(b => b.classList.remove("active"));
+  e.target.classList.add("active");
+  queryMode = parseInt(e.target.dataset.value);
+});
+document.getElementById("btn-transport").addEventListener("click", (e) => {
+  if (e.target.tagName !== "BUTTON") return;
+  document.querySelectorAll("#btn-transport button").forEach(b => b.classList.remove("active"));
+  e.target.classList.add("active");
+  queryTransport = parseInt(e.target.dataset.value);
+});
+
+// ===== 查询 =====
+document.getElementById("btn-search").addEventListener("click", doQuery);
+
+// 回车键触发查询
+document.getElementById("input-from").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") document.getElementById("input-to").focus();
+});
+document.getElementById("input-to").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") doQuery();
+});
+
+function clearMap() {
+  mapLayers.forEach(layer => map.removeLayer(layer));
+  mapLayers = [];
+}
+
+async function doQuery() {
+  const fromName = document.getElementById("input-from").value.trim();
+  const toName = document.getElementById("input-to").value.trim();
+  if (!fromName || !toName) return;
+
+  const btn = document.getElementById("btn-search");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>查询中...';
+
+  const resultsDiv = document.getElementById("panel-results");
+  resultsDiv.innerHTML = '<div class="placeholder"><span class="spinner"></span>正在计算路线...</div>';
+
+  clearMap();
+
+  try {
+    const res = await fetch("/api/query", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: fromName,
+        to: toName,
+        mode: queryMode,
+        transport: queryTransport,
+      }),
+    });
+    const data = await res.json();
+
+    if (data.status === "ok") {
+      renderResults(data);
+      renderMap(data);
+    } else {
+      resultsDiv.innerHTML = `<div class="error-msg">${data.message || "查询失败"}</div>`;
+    }
+  } catch (e) {
+    resultsDiv.innerHTML = `<div class="error-msg">网络错误: ${e.message}</div>`;
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = "查询路线";
+}
+
+function renderResults(data) {
+  const html = [];
+
+  // 总览
+  html.push(`<div class="result-summary">`);
+  html.push(`<div class="total">${data.total}</div>`);
+  html.push(`<div class="unit">${data.unit}</div>`);
+  html.push(`</div>`);
+
+  // 分段
+  (data.segments || []).forEach((seg, i) => {
+    const isPlane = seg.type === "plane";
+    const typeLabel = isPlane ? "飞机" : "火车";
+    const planeClass = isPlane ? " plane" : "";
+    const typePlaneClass = isPlane ? " plane-type" : "";
+    const arrowHtml = isPlane ? '<span class="arrow">✈</span>' : '<span class="arrow">→</span>';
+
+    html.push(`<div class="segment-card${planeClass}" onclick="focusSegment(${i})">`);
+    html.push(`<div class="seg-header">`);
+    html.push(`<span class="seg-type${typePlaneClass}">${typeLabel}</span>`);
+    html.push(`<span class="seg-schedule">${seg.schedule}</span>`);
+    html.push(`</div>`);
+    html.push(`<div class="seg-route">${seg.from} ${arrowHtml} ${seg.to}</div>`);
+    html.push(`<div class="seg-meta">`);
+    html.push(`<span>时间: ${seg.time}分钟</span>`);
+    html.push(`<span>费用: ¥${seg.cost}</span>`);
+    html.push(`</div>`);
+    html.push(`</div>`);
+  });
+
+  document.getElementById("panel-results").innerHTML = html.join("");
+}
+
+// ===== 地图渲染 =====
+function renderMap(data) {
+  clearMap();
+  const bounds = [];
+  const allCoords = [];
+
+  // 收集所有段中的坐标
+  const segments = data.segments || [];
+  const trainGroup = [];
+  const planeGroup = [];
+
+  segments.forEach(seg => {
+    const fromLatLng = [seg.from_lat, seg.from_lon];
+    const toLatLng = [seg.to_lat, seg.to_lon];
+
+    if (seg.from_lat && seg.from_lon) {
+      allCoords.push({ latlng: fromLatLng, name: seg.from, isStation: seg.type === "train" });
+    }
+    if (seg.to_lat && seg.to_lon) {
+      allCoords.push({ latlng: toLatLng, name: seg.to, isStation: seg.type === "train" });
+    }
+
+    const coords = [];
+    if (seg.from_lat && seg.from_lon) coords.push(fromLatLng);
+    if (seg.to_lat && seg.to_lon) coords.push(toLatLng);
+
+    if (coords.length === 2) {
+      if (seg.type === "plane") {
+        planeGroup.push({ coords, name: seg.schedule });
+      } else {
+        trainGroup.push({ coords, name: seg.schedule });
+      }
+      bounds.push(coords[0], coords[1]);
+    }
+  });
+
+  // 画线
+  trainGroup.forEach(g => {
+    const line = L.polyline(g.coords, {
+      color: "#3388ff", weight: 4, opacity: 0.8,
+    }).bindPopup(`<b>火车</b> ${g.name}`).addTo(map);
+    mapLayers.push(line);
+  });
+
+  planeGroup.forEach(g => {
+    const line = L.polyline(g.coords, {
+      color: "#e94560", weight: 3, opacity: 0.7, dashArray: "10,8",
+    }).bindPopup(`<b>飞机</b> ${g.name}`).addTo(map);
+    mapLayers.push(line);
+  });
+
+  // 标记站点
+  const seenCoords = new Set();
+  allCoords.forEach((info, idx) => {
+    const key = info.latlng.join(",");
+    if (seenCoords.has(key)) return;
+    seenCoords.add(key);
+
+    const isStart = idx === 0;
+    const isEnd = idx === allCoords.length - 1;
+    let icon;
+
+    if (isStart || isEnd) {
+      const color = isStart ? "#22c55e" : "#e94560";
+      icon = L.divIcon({
+        html: `<div style="background:${color};width:14px;height:14px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 8px ${color};"></div>`,
+        className: "", iconSize: [14, 14], iconAnchor: [7, 7],
+      });
+    } else if (info.isStation) {
+      icon = L.divIcon({
+        html: '<div style="background:#3388ff;width:8px;height:8px;border-radius:50%;border:2px solid #fff;"></div>',
+        className: "", iconSize: [8, 8], iconAnchor: [4, 4],
+      });
+    } else {
+      return; // 跳过无坐标的点
+    }
+
+    const marker = L.marker(info.latlng, { icon })
+      .bindPopup(`<b>${info.name}</b>`)
+      .addTo(map);
+    mapLayers.push(marker);
+  });
+
+  // 自适应视野
+  if (bounds.length > 0) {
+    map.fitBounds(bounds, { padding: [50, 50] });
+  }
+
+  // 起点终点标记（更大）
+  if (data.starts && data.starts.length > 0) {
+    data.starts.forEach(s => {
+      if (s.lat && s.lon) {
+        const icon = L.divIcon({
+          html: '<div style="background:#22c55e;color:#fff;font-size:11px;font-weight:bold;padding:2px 8px;border-radius:4px;white-space:nowrap;">起点</div>',
+          className: "", iconSize: [40, 18], iconAnchor: [20, -5],
+        });
+        const m = L.marker([s.lat, s.lon], { icon, zIndexOffset: 1000 }).addTo(map);
+        mapLayers.push(m);
+      }
+    });
+  }
+  if (data.ends && data.ends.length > 0) {
+    data.ends.forEach(s => {
+      if (s.lat && s.lon) {
+        const icon = L.divIcon({
+          html: '<div style="background:#e94560;color:#fff;font-size:11px;font-weight:bold;padding:2px 8px;border-radius:4px;white-space:nowrap;">终点</div>',
+          className: "", iconSize: [40, 18], iconAnchor: [20, -5],
+        });
+        const m = L.marker([s.lat, s.lon], { icon, zIndexOffset: 1000 }).addTo(map);
+        mapLayers.push(m);
+      }
+    });
+  }
+}
+
+// 点击路段卡片时聚焦到地图对应位置
+function focusSegment(idx) {
+  const cards = document.querySelectorAll(".segment-card");
+  cards.forEach(c => c.style.borderLeftColor = "#e94560");
+  if (cards[idx]) {
+    cards[idx].style.borderLeftColor = "#ffd700";
+    cards[idx].scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+iata,city_en,city_cn,lat,lon,airport_name
+PEK,Beijing,北京,40.080101013183594,116.58499908447266,Beijing Capital International Airport
+HLD,Hailar,海拉尔,49.2050018311,119.824996948,Dongshan Airport
+TSN,Tianjin,天津,39.124401092499994,117.346000671,Tianjin Binhai International Airport
+TYN,Taiyuan,太原,37.74689865112305,112.62799835205078,Taiyuan Wusu Airport
+CAN,Guangzhou,广州,23.39240074157715,113.29900360107422,Guangzhou Baiyun International Airport
+CSX,Changsha,长沙,28.189199447599997,113.220001221,Changsha Huanghua International Airport
+KWL,Guilin,桂林,25.21809959411621,110.03900146484375,Guilin Liangjiang International Airport
+NNG,Nanning,南宁,22.608299255371094,108.1719970703125,Nanning Wuxu Airport
+SZX,Shenzhen,深圳,22.639299392700195,113.81099700927734,Shenzhen Bao'an International Airport
+CGO,Zhengzhou,郑州,34.519699096699995,113.841003418,Zhengzhou Xinzheng International Airport
+WUH,Wuhan,武汉,30.7838,114.208,Wuhan Tianhe International Airport
+LHW,Lanzhou,兰州,36.5152015686,103.620002747,Lanzhou Zhongchuan Airport
+XIY,Xi'an,西安,34.447102,108.751999,Xi'an Xianyang International Airport
+JHG,Jinghong,景洪,21.973899841308594,100.76000213623047,Xishuangbanna Gasa Airport
+KMG,Kunming,昆明,25.1019444,102.9291667,Kunming Changshui International Airport
+XMN,Xiamen,厦门,24.54400062561035,118.12799835205078,Xiamen Gaoqi International Airport
+KHN,Nanchang,南昌,28.864999771118164,115.9000015258789,Nanchang Changbei International Airport
+FOC,Fuzhou,福州,25.935100555419922,119.66300201416016,Fuzhou Changle International Airport
+HGH,Hangzhou,杭州,30.22949981689453,120.43399810791016,Hangzhou Xiaoshan International Airport
+NGB,Ningbo,宁波,29.82670021057129,121.46199798583984,Ningbo Lishe International Airport
+NKG,Nanjing,南京,31.742000579833984,118.86199951171875,Nanjing Lukou Airport
+HFE,Hefei,合肥,31.780000686645508,117.2979965209961,Hefei Luogang International Airport
+TAO,Qingdao,青岛,36.3621,120.0744,Liuting Airport
+SHA,Shanghai,上海,31.197900772094727,121.33599853515625,Shanghai Hongqiao International Airport
+YNT,Yantai,烟台,37.40169906616211,121.37200164794922,Yantai Laishan Airport
+CKG,Chongqing,重庆,29.719200134277344,106.64199829101562,Chongqing Jiangbei International Airport
+KWE,Guiyang,贵阳,26.53849983215332,106.8010025024414,Longdongbao Airport
+CTU,Chengdu,成都,30.578500747680664,103.9469985961914,Chengdu Shuangliu International Airport
+XIC,Xichang,西昌,27.989099502563477,102.18399810791016,Xichang Qingshan Airport
+KHG,Kashi,喀什,39.5429000854,76.0199966431,Kashgar Airport
+HTN,Hotan,和田,37.03850173950195,79.86489868164062,Hotan Airport
+URC,Urumqi,乌鲁木齐,43.907100677490234,87.47419738769531,Ürümqi Diwopu International Airport
+HRB,Harbin,哈尔滨,45.6234016418457,126.25,Taiping Airport
+MDG,Mudanjiang,牡丹江,44.5241012573,129.569000244,Mudanjiang Hailang International Airport
+DLC,Dalian,大连,38.9656982421875,121.53900146484375,Zhoushuizi Airport
+PVG,Shanghai,上海,31.143400192260742,121.80500030517578,Shanghai Pudong International Airport
+SYX,Sanya,三亚,18.302900314331055,109.41200256347656,Sanya Phoenix International Airport
+LJG,Lijiang,丽江,26.6800003052,100.246002197,Lijiang Airport
+DLU,Dali,大理,25.649401,100.319,Dali Airport
+LXA,Lhasa,拉萨,29.2978000641,90.91190338130001,Lhasa Gonggar Airport
+TNA,Jinan,济南,36.857200622558594,117.21600341796875,Yaoqiang Airport
+CZX,Changzhou,常州,31.919701,119.778999,Changzhou Benniu Airport
+YBP,Yibin,宜宾,28.8005555556,104.545,Yibin Caiba Airport
+HAK,Haikou,海口,19.934900283813477,110.45899963378906,Haikou Meilan International Airport
+SHE,Shenyang,沈阳,41.639801025390625,123.48300170898438,Taoxian Airport
+DOY,Dongying,东营,37.5085983276,118.788002014,Dongying Shengli Airport
+LYA,Luoyang,洛阳,34.741100311299995,112.388000488,Luoyang Airport
+XUZ,Xuzhou,徐州,34.059056,117.555278,Xuzhou Guanyin Airport
+JZH,Jiuzhaigou,九寨沟,32.8533333333,103.682222222,Jiuzhai Huanglong Airport
+SWA,Shantou,汕头,23.552,116.5033,Jieyang Chaoshan International Airport
+DNH,Dunhuang,敦煌,40.16109848022461,94.80919647216797,Dunhuang Airport
+CGQ,Changchun,长春,43.9962005615,125.684997559,Longjia Airport
+CIF,Chifeng,赤峰,42.23500061035156,118.90799713134766,Chifeng Airport
+CIH,Changzhi,长治,36.247501,113.125999,Changzhi Airport
+DAT,Datong,大同,40.060299,113.482002,Datong Airport
+HET,Hohhot,呼和浩特,40.851398,111.823997,Baita International Airport
+BAV,Baotou,包头,40.560001373291016,109.99700164794922,Baotou Airport
+SJW,Shijiazhuang,石家庄,38.28070068359375,114.6969985961914,Shijiazhuang Daguocun International Airport
+TGO,Tongliao,通辽,43.556702,122.199997,Tongliao Airport
+HLH,Ulanhot,乌兰浩特,46.195333,122.008333,Ulanhot Airport
+XIL,Xilinhot,锡林浩特,43.91559982299805,115.96399688720703,Xilinhot Airport
+BHY,Beihai,北海,21.5394,109.293999,Beihai Airport
+CGD,Changde,常德,28.9188995361,111.63999939,Changde Airport
+DYG,Zhangjiajie,张家界,29.1028,110.443001,Dayong Airport
+MXZ,Meizhou,梅州,24.350000381469727,116.13300323486328,Meixian Airport
+ZUH,Zhuhai,珠海,22.006399,113.375999,Zhuhai Jinwan Airport
+LZH,Liuzhou,柳州,24.2075,109.390999,Liuzhou Bailian Airport
+ZHA,Zhanjiang,湛江,21.214399,110.358002,Zhanjiang Airport
+ENH,Enshi,恩施,30.3202991486,109.48500061,Enshi Airport
+NNY,Nanyang,南阳,32.980801,112.614998,Nanyang Jiangying Airport
+XFN,Xiangyang,襄阳,32.1506,112.291,Xiangyang Liuji Airport
+YIH,Yichang,宜昌,30.55655,111.479988,Yichang Sanxia Airport
+AKA,Ankang,安康,32.708099,108.931,Ankang Wulipu Airport
+GOQ,Golmud,格尔木,36.4006,94.786102,Golmud Airport
+HZG,Hanzhong,汉中,33.134136,107.206014,Hanzhong Chenggu Airport
+IQN,Qingyang,庆阳,35.799702,107.602997,Qingyang Airport
+XNN,Xining,西宁,36.5275,102.042999,Xining Caojiabu Airport
+ENY,Yan'an,延安,36.636902,109.554001,Yan'an Ershilipu Airport
+UYN,Yulin,榆林,38.35971,109.590927,Yulin Yuyang Airport
+DIG,Shangri-La,香格里拉,27.7936,99.6772,Diqing Airport
+LUM,Mangshi,芒市,24.4011,98.5317,Mangshi Airport
+SYM,Pu'er,普洱,22.793301,100.959,Pu'er Simao Airport
+ZAT,Zhaotong,昭通,27.325599670410156,103.75499725341797,Zhaotong Airport
+KOW,Ganzhou,赣州,25.853333,114.778889,Ganzhou Airport
+JDZ,Jingdezhen,景德镇,29.3386001587,117.176002502,Jingdezhen Airport
+JIU,Jiujiang,九江,29.476944,115.801111,Jiujiang Lushan Airport
+JUZ,Quzhou,衢州,28.965799,118.899002,Quzhou Airport
+LYG,Lianyungang,连云港,34.571667,118.873611,Lianyungang Airport
+HYN,Huangyan,黄岩,28.56220054626465,121.42900085449219,Huangyan Luqiao Airport
+LYI,Linyi,临沂,35.04610061645508,118.41200256347656,Shubuling Airport
+JJN,Quanzhou,泉州,24.7964,118.589996,Quanzhou Jinjiang International Airport
+TXN,Huangshan,黄山,29.733299255371094,118.25599670410156,Tunxi International Airport
+WEF,Weifang,潍坊,36.646702,119.119003,Weifang Airport
+WEH,Weihai,威海,37.18709945678711,122.22899627685547,Weihai Airport
+WUX,Wuxi,无锡,31.494400024399997,120.429000854,Sunan Shuofang International Airport
+WUS,Wuyishan,武夷山,27.7019,118.000999,Nanping Wuyishan Airport
+WNZ,Wenzhou,温州,27.912201,120.851997,Wenzhou Longwan International Airport
+YNZ,Yancheng,盐城,33.425833,120.203056,Yancheng Airport
+YIW,Yiwu,义乌,29.3446998596,120.031997681,Yiwu Airport
+HSN,Zhoushan,舟山,29.9342002869,122.361999512,Zhoushan Airport
+BPX,Bangda,昌都,30.553600311279297,97.1082992553711,Qamdo Bangda Airport
+GYS,Guangyuan,广元,32.3911018371582,105.7020034790039,Guangyuan Airport
+LZO,Luzhou,泸州,28.85219955444336,105.39299774169922,Luzhou Airport
+MIG,Mianyang,绵阳,31.4281005859375,104.74099731445312,Mianyang Airport
+NAO,Nanchong,南充,30.79545,106.1626,Nanchong Airport
+LZY,Nyingchi,林芝,29.303300857543945,94.33529663085938,Nyingchi Airport
+WXN,Wanzhou,万州,30.8017,108.433,Wanxian Airport
+AKU,Aksu,阿克苏,41.262501,80.291702,Aksu Airport
+IQM,Qiemo,且末,38.233611,85.465556,Qiemo Yudu Airport
+KCA,Kuqa,库车,41.677856,82.872917,Kuqa Airport
+KRL,Korla,库尔勒,41.69779968261719,86.12889862060547,Korla Airport
+KRY,Karamay,克拉玛依,45.46655,84.9527,Karamay Airport
+YIN,Yining,伊宁,43.955799,81.330299,Yining Airport
+HEK,Heihe,黑河,50.1716209371,127.308883667,Heihe Airport
+JMU,Jiamusi,佳木斯,46.84339904789999,130.464996338,Jiamusi Airport
+JNZ,Jinzhou,锦州,41.10139846801758,121.06199645996094,Jinzhou Airport
+NDG,Qiqihar,齐齐哈尔,47.239601135253906,123.91799926757812,Qiqihar Sanjiazi Airport
+YNJ,Yanji,延吉,42.8828010559,129.451004028,Yanji Chaoyangchuan Airport
+AQG,Anqing,安庆,30.582199,117.050003,Anqing Tianzhushan Airport
+YCU,Yuncheng,运城,35.116391,111.031388889,Yuncheng Guangong Airport
+JGN,Jiayuguan,嘉峪关,39.856899,98.3414,Jiayuguan Airport
+DDG,Dandong,丹东,40.0247,124.286003,Dandong Airport
+DSN,Dongsheng,鄂尔多斯,39.49,109.861388889,Ordos Ejin Horo Airport
+PZI,Panzhihua,攀枝花,26.54,101.79852,Bao'anying Airport
+HMI,Hami,哈密,42.8414,93.669197,Hami Airport
+WUZ,Wuzhou,梧州,23.456699,111.248001,Wuzhou Changzhoudao Airport
+TCG,Tacheng,塔城,46.67250061035156,83.3407974243164,Tacheng Airport
+CHG,Chaoyang,朝阳,41.538101,120.434998,Chaoyang Airport
+OHE,Mohe,漠河,52.912777777799995,122.43,Gu-Lian Airport
+JNG,Jining,济宁,35.292778,116.346667,Jining Qufu Airport
+AAT,Altay,阿勒泰,47.7498855591,88.08580780030002,Altay Air Base
+NZH,Manzhouli,满洲里,49.566667,117.33,Manzhouli Xijiao Airport
+WUA,Wuhai,乌海,39.7934,106.7993,Wuhai Airport
+TEN,Tongren,铜仁,27.883333,109.308889,Tongren Fenghuang Airport
+JGS,Jian,吉安,26.856899261499997,114.736999512,Jinggangshan Airport
+FUO,Foshan,佛山,23.083299636799996,113.069999695,Foshan Shadi Airport
+HUZ,Huizhou,惠州,23.0499992371,114.599998474,Huizhou Airport
+FUG,Fuyang,阜阳,32.882157,115.734364,Fuyang Xiguan Airport
+LCX,Longyan,龙岩,25.6746997833,116.747001648,Longyan Guanzhishan Airport
+BSD,Baoshan,保山,25.053301,99.168297,Baoshan Yunduan Airport
+ACX,Xingyi,兴义,25.0863888889,104.959444444,Xingyi Airport
+HZH,Liping,黎平,26.32217,109.1499,Liping Airport
+HJJ,Huaihua Zhijiang,怀化芷江,27.4411111111,109.7,Zhijiang Airport
+LNJ,Lincang,临沧,23.738100051900002,100.025001526,Lintsang Airfield
+TCZ,Tengchong,腾冲,24.9380555556,98.48583333330001,Tengchong Tuofeng Airport
+YUS,Yushu,玉树,32.836388888900004,97.0363888889,Yushu Batang Airport
+HIA,Huai'an,淮安,33.7908333333,119.125,Lianshui Airport
+NGQ,Shiquanhe,狮泉河,32.1,80.0530555556,Ngari Gunsa Airport
+ZHY,Zhongwei,中卫,37.573125,105.154454,Zhongwei Shapotou Airport
+AEB,Baise,百色,23.7206001282,106.959999084,Baise Youjiang Airport
+KJI,Burqin,布尔津,48.2223,86.9959,Kanas Airport
+HDG,Handan,邯郸,36.5258333333,114.425555556,Handan Airport
+JXA,Jixi,鸡西,45.293,131.193,Jixi Xingkaihu Airport
+RKZ,Shigatse,日喀则,29.3519,89.311401,Shigatse Air Base
+RLK,Bayannur,巴彦淖尔,40.926,107.7428,Bayannur Tianjitai Airport
+JIQ,Qianjiang,黔江,29.5133333333,108.831111111,Qianjiang Wulingshan Airport
+NBS,Baishan,白山,42.066944,127.602222,Changbaishan Airport
+LLF,Yongzhou,永州,26.338661,111.610043,Lingling Airport
+YTY,Yangzhou,扬州,32.5634,119.7198,Yangzhou Taizhou Airport
+THQ,Tianshui,天水,34.5593986511,105.86000061,Tianshui Maijishan Airport
+KGT,Kangding,康定,30.1575,101.734722,Kangding Airport
+TLQ,Turpan,吐鲁番,43.0308,89.0987,Turpan Jiaohe Airport
+GYU,Guyuan,固原,36.0788888889,106.216944444,Guyuan Liupanshan Airport
+CNI,Changhai,长海,39.2666666667,122.666944444,Changhai Airport
+JGD,Jiagedaqi,加格达奇,50.371389,124.1175,Jiagedaqi Airport
+BFJ,Bijie,毕节,27.267066,105.472097,Bijie Feixiong Airport
+YIC,Yichun,宜春,27.8025,114.3062,Yichun Mingyueshan Airport
+LLV,Lvliang,吕梁,37.683333,111.142778,Lüliang Airport
+DCY,Daocheng,稻城,29.323056,100.053333,Daocheng Yading Airport
+GXH,Xiahe,夏河,34.8105,102.6447,Gannan Xiahe Airport
+NLT,Xinyuan,新源,43.4318,83.3786,Xinyuan Nalati Airport
+YZY,Zhangye,张掖,38.8018989563,100.675003052,Zhangye Ganzhou Airport
+JUH,Chizhou,池州,30.7403,117.6856,Jiuhuashan Airport
+AOG,Anshan,鞍山,41.105301,122.853996,Anshan Air Base
+DQA,Daqing,大庆,46.7463888889,125.140555556,Saertu Airport
+LDS,Yichun (Heilongjiang),伊春,47.7520555556,129.019125,Lindu Airport
+AVA,Anshun,安顺,26.2605555556,105.873333333,Anshun Huangguoshu Airport
+TNH,Tonghua,通化,42.2538888889,125.703333333,Tonghua Sanyuanpu Airport
+SZV,Suzhou,苏州,31.2631,120.401001,Suzhou Guangfu Airport
+ERL,Erenhot,二连浩特,43.4225,112.096667,Erenhot Saiwusu International Airport
+PKX,Beijing,北京,39.509945,116.41092,Beijing Daxing International Airport
+HCJ,Hechi,河池,24.805,107.6997,Hechi Jinchengjiang Airport
+FYJ,Fuyuan,抚远,48.199494,134.366447,Dongji Aiport
+LPF,Liupanshui,六盘水,26.609417,104.979,Liupanshui Yuezhao Airport
+KJH,Kaili,凯里,26.972,107.988,Kaili Airport
+HPG,Shennongjia,神农架,31.626,110.34,Shennongjia Hongping Airport
+ZQZ,Zhangjiakou,张家口,40.7386016846,114.930000305,Zhangjiakou Ningyuan Airport
+YIE,Arxan,阿尔山,47.3106,119.9117,Arxan Yi'ershi Airport
+HNY,Hengyang,衡阳,26.9053,112.627998,Hengyang Nanyue Airport
+AHJ,Ngawa,阿坝,32.53154,102.35224,Hongyuan Airport
+JIC,Jinchang,金昌,38.542222222199996,102.348333333,Jinchuan Airport
+BPL,Bole,博乐,44.895,82.3,Alashankou Bole (Bortala) airport
+FYN,Fuyun,富蕴,46.804169,89.512006,Fuyun Koktokay Airport
+LFQ,Linfen,临汾,36.132629,111.641236,Linfen Qiaoli Airport
+RIZ,Rizhao,日照,35.405033,119.324403,Rizhao Shanzihe Airport
+SQJ,Sanming,三明,26.4263,117.8336,Shaxian Airport
+WDS,Shiyan,十堰,32.591667,110.907778,Shiyan Wudangshan Airport
+BFU,Bengbu,蚌埠,32.8477333333,117.320244444,Bengbu Airport
+RUG,Rugao,如皋,32.25788497924805,120.50165557861328,Rugao Air Base
+WHA,Wuhu,芜湖,,,
+YKH,Yingkou,营口,40.542524,122.3586,Yingkou Lanqi Airport
+AXF,Alxa Left Banner,阿拉善左旗,38.74831,105.58858,Alxa Left Banner Bayanhot Airport
+HXD,Haixi,德令哈,37.125286,97.268658,Delingha Airport
+BAR,Qionghai,琼海,19.13824,110.454775,Qionghai Bo'ao Airport
+UCB,Ulanqab,乌兰察布市,41.129722,113.108056,Ulanqab Jining Airport
+WGN,Shaoyang,邵阳,26.802,110.642,Shaoyang Wugang Airport
+DBC,Baicheng,白城,45.505278,123.019722,Baicheng Chang'an Airport
+LNL,Longnan,陇南,33.788,105.797,Longnan Chengzhou Airport
+SQD,Shangrao,上饶,28.3797,117.9643,Shangrao Sanqingshan Airport
+YSQ,Songyuan,松原,44.938114,124.550178,Songyuan Chaganhu Airport
+JSJ,Jiansanjiang,建三江,47.11,132.660278,Jiansanjiang Airport
+WMT,Zunyi Maotai,遵义,27.81638,106.33268,Zunyi Maotai Airport
+LLB,Libo,荔波,25.4525,107.961667,Libo Airport
+CDE,Chengde,承德,41.1225,118.073889,Chengde Puning Airport
+DTU,Wudalianchi,五大连池,48.445,126.133,Wudalianchi Dedu Airport
+EJN,Ejin Banner,额济纳旗,42.0155,101.0005,Ejin Banner-Taolai Airport
+RHT,Alxa Right Banner,阿拉善右旗,39.225,101.546,Alxa Right Banner Badanjilin Airport
+HUO,Holingol,霍林郭勒,45.487222,119.407222,Holingol Huolinhe Airport
+GMQ,Golog,果洛,34.418066,100.301144,Golog Maqin Airport
+QSZ,Yarkant,莎车,38.281055,77.075192,Yeerqiang Airport
+CWJ,Cangyuan,沧源,23.273889,99.373611,Cangyuan Washan Airport
+JMJ,Lancang Lahu,澜沧,22.415833,99.786389,Lancang Jingmai Airport
+NLH,Ninglang,宁蒗,27.5403,100.7593,Ninglang Luguhu Airport
+WUT,Xinzhou,忻州,38.597456,112.969173,Xinzhou Wutaishan Airport
+NZL,Zhalantun,扎兰屯,47.865833,122.767503,Chengjisihan Airport
+TFU,Chengdu Tianfu,成都,30.3126,104.4442,Chengdu Tianfu International Airport

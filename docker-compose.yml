@@ -1,0 +1,13 @@
+services:
+  traffic-app:
+    build: .
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    volumes:
+      - ./cities.csv:/app/cities.csv:ro
+      - ./airports_cn.csv:/app/airports_cn.csv:ro
+      - ./china_flights.csv:/app/china_flights.csv:ro
+      - ./stations.csv:/app/stations.csv:ro
+      - ./stations2.csv:/app/stations2.csv:ro
+      - ./railway_line.csv:/app/railway_line.csv:ro

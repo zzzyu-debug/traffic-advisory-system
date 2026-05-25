@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+ngrok.exe
+main_system2.exe
+.vscode/
+*.zip
+*.o
